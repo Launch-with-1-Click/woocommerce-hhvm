@@ -186,6 +186,7 @@ if [ "$CF_PATTERN" != "nfs_client" ]; then
   plugin_install "flamingo" "$SERVERNAME" > /dev/null 2>&1
   plugin_install "contact-form-7" "$SERVERNAME" > /dev/null 2>&1
   plugin_install "simple-ga-ranking" "$SERVERNAME" > /dev/null 2>&1
+  plugin_install "woocommerce" "$SERVERNAME" > /dev/null 2>&1
 
   if [ -f /var/www/vhosts/${INSTANCEID}/wp-content/object-cache.php ]; then
     /bin/rm /var/www/vhosts/${INSTANCEID}/wp-content/object-cache.php
