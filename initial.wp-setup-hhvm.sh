@@ -166,26 +166,7 @@ if [ "$CF_PATTERN" != "nfs_client" ]; then
     /usr/bin/php /tmp/amimoto/wp-setup.php $SERVERNAME $INSTANCEID $PUBLICNAME
   fi
 
-  # Performance
   plugin_install "nginx-champuru" "$SERVERNAME" > /dev/null 2>&1
-  plugin_install "wpbooster-cdn-client" "$SERVERNAME" > /dev/null 2>&1
-  plugin_install "nephila-clavata" "$SERVERNAME" > /dev/null 2>&1
-
-  # Developer
-  plugin_install "debug-bar" "$SERVERNAME" > /dev/null 2>&1
-  plugin_install "debug-bar-extender" "$SERVERNAME" > /dev/null 2>&1
-  plugin_install "debug-bar-console" "$SERVERNAME" > /dev/null 2>&1
-
-  #Security
-  plugin_install "crazy-bone" "$SERVERNAME" > /dev/null 2>&1
-  plugin_install "login-lockdown" "$SERVERNAME" > /dev/null 2>&1
-  plugin_install "google-authenticator" "$SERVERNAME" > /dev/null 2>&1
-
-  #Other
-  plugin_install "nginx-mobile-theme" "$SERVERNAME" > /dev/null 2>&1
-  plugin_install "flamingo" "$SERVERNAME" > /dev/null 2>&1
-  plugin_install "contact-form-7" "$SERVERNAME" > /dev/null 2>&1
-  plugin_install "simple-ga-ranking" "$SERVERNAME" > /dev/null 2>&1
   plugin_install "woocommerce" "$SERVERNAME" > /dev/null 2>&1
 
   if [ -f /var/www/vhosts/${INSTANCEID}/wp-content/object-cache.php ]; then
