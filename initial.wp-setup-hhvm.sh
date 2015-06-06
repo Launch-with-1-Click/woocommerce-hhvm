@@ -194,6 +194,7 @@ fi
 
 /bin/chown -R nginx:nginx /var/log/nginx
 /bin/chown -R nginx:nginx /var/log/php-fpm
+mkdir -p /var/tmp/php
 /bin/chown -R nginx:nginx /var/tmp/php
 /bin/chown -R nginx:nginx /var/lib/php
 /bin/chmod +x /usr/local/bin/wp-setup
