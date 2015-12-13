@@ -30,7 +30,7 @@ function theme_install(){
   /bin/rm -r /tmp/${1}.zip
 }
 
-WP_VER="4.2.1"
+WP_VER="4.3.1"
 PHP_MY_ADMIN_VER="4.3.13"
 
 INSTANCETYPE=`/usr/bin/curl -s curl http://169.254.169.254/latest/meta-data/instance-type`
