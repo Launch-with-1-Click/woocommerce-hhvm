@@ -183,9 +183,6 @@ if [ "$CF_PATTERN" != "nfs_client" ]; then
 
   plugin_install "nginx-champuru" "$SERVERNAME" > /dev/null 2>&1
   plugin_install "woocommerce" "$SERVERNAME" > /dev/null 2>&1
-  if [ "$REGION" = "ap-northeast-1" ]; then
-    plugin_install "woocommerce-for-japan" "$SERVERNAME" > /dev/null 2>&1
-  fi
   theme_install "storefront" "$SERVERNAME" > /dev/null 2>&1
 
   if [ -f /var/www/vhosts/${INSTANCEID}/wp-content/object-cache.php ]; then
