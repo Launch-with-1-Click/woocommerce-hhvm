@@ -14,8 +14,23 @@ function plugin_install(){
 
   /bin/rm -r /tmp/${1}.zip
 }
+function theme_install(){
+  cd /tmp
 
-WP_VER="4.2.1"
+  if [ -f /tmp/${1}.zip ]; then
+    rm -r /tmp/${1}.zip
+  fi
+  /usr/bin/wget http://downloads.wordpress.org/theme/${1}.zip
+
+  if [ -d /var/www/vhosts/${2}/wp-content/themes/${1} ]; then
+    /bin/rm -rf /var/www/vhosts/${2}/wp-content/themes/${1}
+  fi
+  /usr/bin/unzip /tmp/${1}.zip -d /var/www/vhosts/${2}/wp-content/themes/
+
+  /bin/rm -r /tmp/${1}.zip
+}
+
+WP_VER="4.3.1"
 PHP_MY_ADMIN_VER="4.3.13"
 
 INSTANCETYPE=`/usr/bin/curl -s curl http://169.254.169.254/latest/meta-data/instance-type`
@@ -168,6 +183,10 @@ if [ "$CF_PATTERN" != "nfs_client" ]; then
 
   plugin_install "nginx-champuru" "$SERVERNAME" > /dev/null 2>&1
   plugin_install "woocommerce" "$SERVERNAME" > /dev/null 2>&1
+  if [ "$REGION" = "ap-northeast-1" ]; then
+    plugin_install "woocommerce-for-japan" "$SERVERNAME" > /dev/null 2>&1
+  fi
+  theme_install "storefront" "$SERVERNAME" > /dev/null 2>&1
 
   if [ -f /var/www/vhosts/${INSTANCEID}/wp-content/object-cache.php ]; then
     /bin/rm /var/www/vhosts/${INSTANCEID}/wp-content/object-cache.php
